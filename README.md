@@ -1,11 +1,10 @@
-# mangeot2-produtos-relacionados-tamanho
-
 Dot_ProductSizes
 
-Atributo de produtos relacionados por tamanho/volume SKU|Rótulo (ex: 1234|500ml).
+Atributo manaul para produtos relacionados por tamanho/volume SKU|Rótulo (ex: 1234|500ml).
+Nome do SKu **dot_related_sizes**
 
 ## Instalação
-1. Copie `app/code/Dot/ProductSizes` para o seu projeto.
+1. Crie a pasta `app/code/Dot/ProductSizes` para o seu projeto.
 2. Rode:
    ```bash
    bin/magento setup:upgrade
