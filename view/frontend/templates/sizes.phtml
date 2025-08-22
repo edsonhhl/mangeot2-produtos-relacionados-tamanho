@@ -1,0 +1,103 @@
+<?php
+/** @var \\Dot\\ProductSizes\\Block\\Sizes $block */
+$items = $block->getRelated();
+if (!count($items)) return;
+?>
+<div class="dot-sizes-wrap" data-role="dot-sizes">
+    <div class="dot-sizes-label"><?= $block->escapeHtml(__('Outros tamanhos:')) ?></div>
+    <div class="dot-sizes-list">
+        <?php foreach ($items as $i => $it): ?>
+            <a class="dot-size-link" href="<?= $block->escapeUrl($it['url']) ?>" data-tooltip="tooltip-<?= (int)$i ?>" aria-label="<?= $block->escapeHtmlAttr($it['sku']) ?>">
+                <span class="dot-pill"><?= $block->escapeHtml($it['label']) ?></span>
+            
+                <div id="tooltip-<?= (int)$i ?>" class="dot-tooltip" role="tooltip" aria-hidden="true">
+                    <div class="dot-tip-content">
+                        <img class="dot-tip-img" src="<?= $block->escapeUrl($it['image']) ?>" alt=""/>
+                        <div class="dot-tip-info">
+                            <strong class="dot-tip-name"><?= $block->escapeHtml($it['product']->getName()) ?></strong>
+                            <div class="dot-tip-price"><?= $block->renderPrice($it['product']) ?></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<style>
+.dot-sizes-wrap{
+    margin:12px 0;
+    min-height: 60px;
+}
+.dot-sizes-label{
+    font-weight:600;
+    margin-bottom:6px;
+    font-size:14px
+}
+.dot-sizes-list{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    position:relative
+}
+.dot-size-link{
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+.dot-size-link:focus .dot-pill, 
+.dot-size-link:hover .dot-pill{
+    border-color:#222
+}
+.dot-size-link:hover{
+    border-color: #FD3ADA;
+}
+.dot-tooltip{
+    display:none;
+    position:absolute;
+    z-index:9999;
+    background:#fff;
+    border:1px solid #FD3ADA;
+    box-shadow:0 8px 24px rgba(0,0,0,.15);
+    border-radius:10px;
+    width:280px;
+    padding:10px; 
+    top: -95px;
+    left: -10px;
+}
+.dot-tip-content{
+    display:flex;
+    gap:10px;
+    align-items:center
+}
+.dot-tip-img{
+    width:72px;
+    height:72px;
+    object-fit:contain;
+    border-radius:8px;
+    border:1px solid #eee;
+    background:#fff
+}
+.dot-tip-info{
+    flex:1;
+    min-width:0
+}
+.dot-tip-name{
+    display:block;
+    font-size:13px;
+    line-height:1.3;
+    margin-bottom:6px
+}
+.dot-tip-price{
+    font-size:14px
+}
+@media (hover:hover){ .dot-size-link:hover .dot-tooltip{display:block} }
+
+</style>
