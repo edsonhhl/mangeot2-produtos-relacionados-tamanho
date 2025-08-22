@@ -1,0 +1,13 @@
+{
+  "name": "dot/module-product-sizes",
+  "description": "Product sizes selector",
+  "type": "magento2-module",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Dot\\\\ProductSizes\\\\": ""
+    }
+  }
+}
